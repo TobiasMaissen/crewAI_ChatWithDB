@@ -1,0 +1,26 @@
+schema_investigation:
+  description: >
+    Investigate and analyze the database schema to create a structured representation
+    of tables, columns, relationships, and common query patterns.
+    IMPORTANT: When using the NL2SQLTool, always format your input as "sql_query": "YOUR SQL QUERY HERE".
+    Do not use "query": "..." as it will cause an error.
+  expected_output: >
+    A JSON structure containing:
+    - Complete table definitions with columns and their properties
+    - Table relationships and foreign key constraints
+    - Common join patterns and their use cases
+    - Table and column descriptions for context
+
+sql_construction_task:
+  description: >
+    Analyze the conversation context and current question to create appropriate SQL queries.
+    Consider previous mentions of entities (like names, products, etc.) when forming queries.
+    If the question refers to previously mentioned entities, use them in the query.
+    Use the tool JsonSearchTool for having all the needed informations for constructing sql queries.
+    Construct SQL querie(s) and execute it with the nl2sql to gather the needed informations from the database.
+    IMPORTANT: When using the NL2SQLTool, always format your input as "sql_query": "YOUR SQL QUERY HERE".
+    The result must satisfy and answer the stakeholder's question about: {business_requirement}
+    Check if the output is what we need and if not, re-construct or create a new sql query for gathering appropriate results.
+  expected_output: >
+    Answering the question {business_requirement}.
+    Answering complete and detailed.

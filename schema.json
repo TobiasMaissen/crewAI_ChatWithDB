@@ -1,0 +1,443 @@
+{
+  "tables": {
+    "invoice": [
+      {
+        "name": "invoice_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each invoice."
+      },
+      {
+        "name": "customer_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "customer_id",
+        "description": "Identifier for the customer."
+      },
+      {
+        "name": "invoice_date",
+        "data_type": "timestamp without time zone",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Date when the invoice was generated."
+      },
+      {
+        "name": "total",
+        "data_type": "numeric",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Total amount for the invoice."
+      },
+      {
+        "name": "billing_address",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Billing address for the invoice."
+      },
+      {
+        "name": "billing_city",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Billing city."
+      },
+      {
+        "name": "billing_state",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Billing state."
+      },
+      {
+        "name": "billing_country",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Billing country."
+      },
+      {
+        "name": "billing_postal_code",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Billing postal code."
+      }
+    ],
+    "album": [
+      {
+        "name": "album_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each album."
+      },
+      {
+        "name": "artist_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "artist_id",
+        "description": "Identifier for the artist."
+      },
+      {
+        "name": "title",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Title of the album."
+      }
+    ],
+    "customer": [
+      {
+        "name": "customer_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each customer."
+      },
+      {
+        "name": "first_name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Customer's first name."
+      },
+      {
+        "name": "last_name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Customer's last name."
+      },
+      {
+        "name": "email",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Customer's email address."
+      },
+      {
+        "name": "support_rep_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "employee_id",
+        "description": "Employee supporting the customer."
+      }
+    ],
+    "employee": [
+      {
+        "name": "employee_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each employee."
+      },
+      {
+        "name": "first_name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Employee's first name."
+      },
+      {
+        "name": "last_name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Employee's last name."
+      },
+      {
+        "name": "reports_to",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "employee_id",
+        "description": "Supervisor of the employee."
+      }
+    ],
+    "artist": [
+      {
+        "name": "artist_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each artist."
+      },
+      {
+        "name": "name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Name of the artist."
+      }
+    ],
+    "invoice_line": [
+      {
+        "name": "invoice_line_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each invoice line."
+      },
+      {
+        "name": "invoice_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "invoice_id",
+        "description": "Identifier for the invoice."
+      },
+      {
+        "name": "track_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "track_id",
+        "description": "Identifier for the track."
+      },
+      {
+        "name": "quantity",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Number of units sold."
+      },
+      {
+        "name": "unit_price",
+        "data_type": "numeric",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Price per unit."
+      }
+    ],
+    "track": [
+      {
+        "name": "track_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each track."
+      },
+      {
+        "name": "name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Name of the track."
+      },
+      {
+        "name": "album_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "album_id",
+        "description": "Identifier for the album."
+      },
+      {
+        "name": "media_type_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "media_type_id",
+        "description": "Identifier for the media type."
+      },
+      {
+        "name": "genre_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "genre_id",
+        "description": "Identifier for the genre."
+      }
+    ],
+    "playlist": [
+      {
+        "name": "playlist_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each playlist."
+      },
+      {
+        "name": "name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Name of the playlist."
+      }
+    ],
+    "playlist_track": [
+      {
+        "name": "playlist_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "playlist_id",
+        "description": "Identifier for the playlist."
+      },
+      {
+        "name": "track_id",
+        "data_type": "integer",
+        "is_primary": false,
+        "foreign_key": "track_id",
+        "description": "Identifier for the track."
+      }
+    ],
+    "genre": [
+      {
+        "name": "genre_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each genre."
+      },
+      {
+        "name": "name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Name of the genre."
+      }
+    ],
+    "media_type": [
+      {
+        "name": "media_type_id",
+        "data_type": "integer",
+        "is_primary": true,
+        "foreign_key": null,
+        "description": "Unique identifier for each media type."
+      },
+      {
+        "name": "name",
+        "data_type": "character varying",
+        "is_primary": false,
+        "foreign_key": null,
+        "description": "Name of the media type."
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from_table": "track",
+      "to_table": "album",
+      "from_column": "album_id",
+      "to_column": "album_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "album",
+      "to_table": "artist",
+      "from_column": "artist_id",
+      "to_column": "artist_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "invoice",
+      "to_table": "customer",
+      "from_column": "customer_id",
+      "to_column": "customer_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "customer",
+      "to_table": "employee",
+      "from_column": "support_rep_id",
+      "to_column": "employee_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "employee",
+      "to_table": "employee",
+      "from_column": "reports_to",
+      "to_column": "employee_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "track",
+      "to_table": "genre",
+      "from_column": "genre_id",
+      "to_column": "genre_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "invoice_line",
+      "to_table": "invoice",
+      "from_column": "invoice_id",
+      "to_column": "invoice_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "track",
+      "to_table": "media_type",
+      "from_column": "media_type_id",
+      "to_column": "media_type_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "playlist_track",
+      "to_table": "playlist",
+      "from_column": "playlist_id",
+      "to_column": "playlist_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "invoice_line",
+      "to_table": "track",
+      "from_column": "track_id",
+      "to_column": "track_id",
+      "relation_type": "foreign_key"
+    },
+    {
+      "from_table": "playlist_track",
+      "to_table": "track",
+      "from_column": "track_id",
+      "to_column": "track_id",
+      "relation_type": "foreign_key"
+    }
+  ],
+  "common_joins": [
+    {
+      "join_type": [
+        "INNER JOIN"
+      ],
+      "tables": [
+        "invoice",
+        "customer"
+      ],
+      "use_case": [
+        "To retrieve invoices along with customer details."
+      ]
+    },
+    {
+      "join_type": [
+        "INNER JOIN"
+      ],
+      "tables": [
+        "album",
+        "artist"
+      ],
+      "use_case": [
+        "To retrieve albums along with their artists."
+      ]
+    },
+    {
+      "join_type": [
+        "LEFT JOIN"
+      ],
+      "tables": [
+        "invoice",
+        "invoice_line"
+      ],
+      "use_case": [
+        "To include invoice lines even when an invoice might not have any lines."
+      ]
+    }
+  ],
+  "table_descriptions": {
+    "artist": "Contains all artists.",
+    "album": "Contains all albums associated with specific artists.",
+    "employee": "Contains employee details and their relations.",
+    "customer": "Contains data about the customers.",
+    "invoice": "Records of invoices issued to customers.",
+    "invoice_line": "Details of items sold per invoice.",
+    "track": "Contains information about individual tracks.",
+    "playlist": "Lists playlists created by users.",
+    "playlist_track": "Associates tracks with specific playlists.",
+    "genre": "Contains all music genres.",
+    "media_type": "Describes different types of media."
+  }
+}

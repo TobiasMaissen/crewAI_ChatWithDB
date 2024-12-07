@@ -1,0 +1,5 @@
+{
+  "user_input": "Which customer is making the most revenue?",
+  "sql_queries": "SELECT customer_id, SUM(total) AS total_revenue FROM invoice GROUP BY customer_id ORDER BY total_revenue DESC LIMIT 1;",
+  "final_answer": "The customer with ID 6 has made a total revenue of $49.62."
+}
