@@ -6,8 +6,46 @@ import os
 from pydantic import BaseModel, Field
 from typing import List, Dict, Optional
 
+from crewai.memory.long_term.long_term_memory import LongTermMemory
+from crewai.memory.short_term.short_term_memory import ShortTermMemory
+from crewai.memory.entity.entity_memory import EntityMemory
+from crewai.memory.storage.ltm_sqlite_storage import LTMSQLiteStorage
+from crewai.memory.storage.rag_storage import RAGStorage
+
 # Load Environment Variables
 load_dotenv()
+
+# Define the data directory
+DATA_DIR = "./db"
+
+embedder = {
+    "provider": "openai",
+    "config": {
+        "model": "text-embedding-ada-002"
+    }
+}
+
+# Initialize the Long Term Memory
+ltm = LongTermMemory(
+    storage=LTMSQLiteStorage(
+        db_path=f"{DATA_DIR}/long_term_memory.db")
+)
+
+# Initialize the Short Term Memory
+stm = ShortTermMemory(
+    storage=RAGStorage(
+        type="short_term",
+        embedder_config=embedder
+    )
+)
+
+# Initialize the Entity Memory
+em = EntityMemory(
+    storage=RAGStorage(
+        type="entities",
+        embedder_config=embedder
+    )
+)
 
 # Create Tools
 nl2sql = NL2SQLTool(db_uri=f'postgresql://tobiasmaissen:{os.getenv("POSTGRESQL_KEY")}@localhost:5432/chinook')
@@ -132,5 +170,8 @@ class SqlQueryBuilder():
             tasks=self.tasks,
             process=Process.sequential,
             verbose=True,
-            memory=True
+            memory=True,
+            long_term_memory=ltm,
+            short_term_memory=stm,
+            entity_memory=em
         )

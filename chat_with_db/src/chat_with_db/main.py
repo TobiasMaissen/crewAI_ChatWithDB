@@ -67,7 +67,10 @@ def plot():
 
 if __name__ == "__main__":
     # Example usage
-    # question = "Which customer ID has the largest invoice sum? Tell me the ID and the SUM."
-    question = "Which customer is making the most revenue?"
+    # question = "Which customer ID has the largest invoice sum? Tell me the Name and the SUM."
+    # question = "And where does she live?"
+    
+    # question = "Is there a customer with the name Robert in the database?"
+    question = "Okay, and what is his revenue?"
     answer = get_db_answer(question)
     print(f"Q: {question}\nA: {answer}")
